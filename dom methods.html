@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo" style="font-size: 7em">Hola mundo!</p>
+
+<p class="demo" style="font-size: 3em">Hola!</p>
+<p class="demo" style="font-size: 3em">Estimado</p>
+<p class="demo" style="font-size: 3em">Público!</p>
+  
+<button style="font-size: 3em" onclick="change()">Try it</button>
+    
+</body>
+    
+    <script>
+        function change() 
+        {
+        //====================== FIRST METHOD =========================
+            
+        //document.getElementById("demo").innerHTML = "Hello World!"; //Date();
+            
+        //var elem = document.getElementById("demo");
+        //elem.innerHTML = "Hello World!";
+         
+        //====================== SECOND METHOD =========================
+        /*
+        var arr =  document.getElementsByClassName("demo");
+        
+        //accessing the second element
+        arr[1].innerHTML = "Hi";
+        
+        */
+        //====================== THIRD METHOD =========================
+        
+        
+          var arr = document.getElementsByTagName("p");
+            for (var x = 0; x < arr.length; x++) {
+            arr[x].innerHTML = "Hi there";  
+           
+            }
+        }
+    </script>
+</html>
