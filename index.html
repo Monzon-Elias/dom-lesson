@@ -15,6 +15,10 @@
     <script>
         function change() 
         {
+        //=================================================================    
+        //====================== DOM MANIPULATION =========================
+        //================================================================= 
+            
         //====================== FIRST METHOD =========================
             
         //document.getElementById("demo").innerHTML = "Hello World!"; //Date();
@@ -39,5 +43,73 @@
            
             }
         }
+        //=================================================================   
+        //====================== JAVA OBJECTS & MORE =========================
+        //=================================================================
+        
+        var elias = 
+            {
+            name: 'elias',
+            yearOfBirth: 1984,
+            calculateAge: function() 
+                {
+                console.log(this);
+                console.log(2018 - this.yearOfBirth);
+
+                function innerFunction() 
+                    {
+                    console.log(this);
+                    }
+                innerFunction(); //raro no? esta función pertenece a WINDOWS OBJECT
+                }
+            }
+        
+        elias.calculateAge();
+        
+        var ricardo = 
+            {
+            name: 'Ricardo',
+            yearOfBirth: 1980
+            };
+        
+       ricardo.calculateAge = elias.calculateAge;
+       ricardo.calculateAge();      
+    
+        
+        
+//========================== Function Constructor ====================
+        
+/*var pirulo = {   ** Este objeto está como modelo de
+    name: 'John',     objeto que el constructor va a crear **
+    yearOfBirth: 1990,
+    job: 'teacher'
+};*/
+        
+var Person = function(name, yearOfBirth, job) 
+{
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+
+Person.prototype.calculateAge  = function() 
+{
+    console.log(2016 - this.yearOfBirth);
+};
+        
+Person.prototype.lastName = 'Smith'; //todos son hermanos ahora
+        
+var elias = new Person('Elías', 1990, 'teacher');
+var vanessa = new Person('Vanessa', 1969, 'designer');
+var carlos = new Person('Carlos', 1948, 'retired');
+        
+elias.calculateAge();
+vanessa.calculateAge();
+mark.calculateAge();
+        
+console.log(elias.lastName);
+console.log(vanessa.lastName);
+console.log(carlos.lastName);
+
     </script>
 </html>
