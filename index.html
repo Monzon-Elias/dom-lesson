@@ -1,21 +1,55 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>CIT 261 Fluency Porfolio</title>
+    <link rel="stylesheet" type="text/css" href="cit261Style.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+</head>
+    
 <body>
-
+<!--
 <p id="demo" style="font-size: 7em">Hola mundo!</p>
-
 <p class="demo" style="font-size: 3em">Hola!</p>
 <p class="demo" style="font-size: 3em">Estimado</p>
 <p class="demo" style="font-size: 3em">Público!</p>
   
 <button style="font-size: 3em" onclick="change()">Try it</button>
-    
+ -->
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
+    <section class="s"></section>
 </body>
     
-    <script>
-        function change() 
-        {
-        //=================================================================    
+    <script>  
+        //=================================================================   
+        //================== PAGE LAYOUT WITH JAVASCRIPT ==================
+        //================================================================= 
+       
+        document.body.style.margin = 0;
+        var section = document.getElementsByTagName("section");
+                for(var num = 0; num < section.length; num++)
+            {
+                section[num].style.width = "100%";
+                section[num].style.height = "100vh";
+                section[num].style.boxSizing = "border-box";
+                section[num].style.background = "url('images/img"+num+".jpeg') fixed center center";
+                section[num].style.backgroundSize = "cover";
+            }
+
+        //=================================================================  
         //====================== DOM MANIPULATION =========================
         //================================================================= 
             
@@ -36,11 +70,12 @@
         */
         //====================== THIRD METHOD =========================
         
-        
+        function change() 
+        {
           var arr = document.getElementsByTagName("p");
-            for (var x = 0; x < arr.length; x++) {
+            for (var x = 0; x < arr.length; x++) 
+            {
             arr[x].innerHTML = "Hi there";  
-           
             }
         }
         //=================================================================   
@@ -105,7 +140,7 @@ var carlos = new Person('Carlos', 1948, 'retired');
         
 elias.calculateAge();
 vanessa.calculateAge();
-mark.calculateAge();
+carlos.calculateAge();
         
 console.log(elias.lastName);
 console.log(vanessa.lastName);
