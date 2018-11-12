@@ -1,0 +1,16 @@
+
+@keyframes setup 
+{
+    0% {opacity: 0;}
+    90% {opacity: 1; transform: translateX(160%) rotateZ(-20deg)}
+    100% {transform: translateX(160%)}
+}
+
+@keyframes dance 
+{
+    0% {transform: translateX(160%) rotateZ(0deg)}
+    25% {transform: translateX(160%) rotateZ(20deg)}
+    50% {transform: translateX(160%) rotateZ(-20deg)}          
+    75% {transform: translateX(160%) rotateZ(10deg)}          
+    100% {transform: translateX(160%)}
+}

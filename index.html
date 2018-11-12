@@ -31,10 +31,10 @@
         </div>
     </section>
     <section>
-            <div>
-            <h1>NEXT SECION COMING SOON!</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. 
-            </p>
+        <div>
+            <img class="dancer" src="images/dancer.gif" alt="Fred Astaire hat and cane dancer">
+            <h1>ANIMATIONS</h1>
+            <p>Using two animations simultaneously, we put Fred to dance. Later I think adding an audio. Press the button to see/stop the dancing show <button id="dancing" style="font-size: 1.5em;" onclick="dance()"></button></p>
         </div>
     </section>
     <section>
@@ -118,11 +118,7 @@
 </body>
     
     <script>  
-        
-        //=================================================================  
-        //==================== DOM STYLE MANIPULATION ======================
-        //================================================================= 
-            
+
         //=================================================================   
         //================== PAGE LAYOUT WITH JAVASCRIPT ==================
         //================================================================= 
@@ -135,7 +131,6 @@
             {
                 document.body.style.margin = 0;
                 document.body.style.fontFamily= "Varela Round, sans-serif";
-                var section = document.getElementsByTagName("section");
                 document.getElementById("ftButton").style.display = "none";
                 for(var num = 0; num < section.length; num++)
                     {
@@ -146,6 +141,7 @@
                         section[num].style.boxSizing = "border-box";
                         section[num].style.background = "url('images/img"+num+".jpeg') fixed center center / cover";
                         section[num].style.position = "relative";
+                        
                         /* Add style to the content div inside all sections (text) */
                         section[num].firstElementChild.style.position = "absolute";
                         section[num].firstElementChild.style.bottom = "0";
@@ -154,6 +150,47 @@
                         section[num].firstElementChild.style.padding = "20px";
                         section[num].firstElementChild.style.fontSize = "1.5em";
                     }
+            }
+        
+        //=================================================================  
+        //========================== ANIMATIONS ===========================
+        //=================================================================
+        
+        var d = document.getElementById("dancing"); //store the button in a vabiable
+        d.innerText = "dance Fred!"; // set the button text
+        var fred = section[1].querySelector("img");
+        fred.style.display = "none";
+        fred.style.margin = "0";
+        fred.style.padding = "0";
+        fred.style.animation ="setup 2s ease-out, dance 2s 2s ease-out infinite";
+        
+        function dance()
+        {
+            fred.style.display = "inline-block";
+            if(d.innerText == "dance Fred!")
+                {
+                    fred.style.animationPlayState = "running";
+                    d.innerText = "stop Fred";
+                }
+            else
+                {
+                    d.innerText = "dance Fred!";
+                    fred.style.animationPlayState = "paused";
+                }
+        }
+        
+        //=================================================================  
+        //==================== DOM STYLE MANIPULATION ======================
+        //================================================================= 
+        
+        var texts = ["Press the button to create an element", "Why this face?", "You can to it better!", "Now it's better"];
+        for(var num = 0; num <= 3; num++)
+            {
+                var par = document.createElement("p");
+                //console.log(par);
+                var div = document.getElementById("dom");
+                div.appendChild(par);
+                console.log(div);
             }
         //=================================================================   
         //====================== JAVA OBJECTS & MORE =========================
