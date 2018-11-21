@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>CIT 261 Fluency Porfolio</title>
     <link rel="stylesheet" type="text/css" href="cit261Style.css">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Shojumaru" rel="stylesheet">
 </head>
     
 <body>
@@ -33,16 +33,50 @@
     <section>
         <div>
             <img class="dancer" src="images/dancer.gif" alt="Fred Astaire hat and cane dancer">
-            <h1>ANIMATIONS</h1>
-            <p>Using two animations simultaneously, we put Fred to dance. Later I think adding an audio. Press the button to see/stop the dancing show <button id="dancing" style="font-size: 1.5em;" onclick="dance()"></button> <br> See lines 159 to 180 in the Source Code (follow the same instructions present at the bottom of the first section of this page)<a href="#sourceCode"> Click here</a></p>
+            <h1>ANIMATIONS <button id="dancing" style="font-size: 1em;" onclick="dance()"></button></h1>
+            <p>Using two animations simultaneously, we put Fred to dance. Later I think adding an audio. Press the button to see/stop the dancing show. See lines 159 to 180 in the Source Code (follow the same instructions present at the bottom of the first section of this page)<a href="#sourceCode"> Click here</a></p>
         </div>
     </section>
     <section>
             <div>
-            <h1>NEXT SECION COMING SOON!</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. 
-            </p>
-        </div>
+                <div class="flipping-cards-container">
+                    <!--THIS! -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"></div>
+                            <div class="flip-card-back">
+                                <h1>THIS!</h1> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--IS!-->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"></div>
+                            <div class="flip-card-back">
+                                <h1>IS!</h1> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--SPARTA!-->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"></div>
+                            <div class="flip-card-back">
+                                <h1>SPARTA!</h1> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="leonidas-container">
+                        <img src="images/leonidas-roar.jpg" alt="Leonidas roar"> 
+                    </div>
+                <h1>TRANSFORMS <button style="font-size: 1.1em;" onclick= "flipping()">flip</button></h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                
+            </div>
     </section>
     <section>
             <div>
@@ -143,6 +177,7 @@
                         section[num].style.position = "relative";
                         
                         /* Add style to the content div inside all sections (text) */
+                        //section[num].firstElementChild.style.width = "inherit";
                         section[num].firstElementChild.style.position = "absolute";
                         section[num].firstElementChild.style.bottom = "0";
                         section[num].firstElementChild.style.color = "#f1f1f1";
@@ -176,6 +211,45 @@
                 {
                     d.innerText = "dance Fred!";
                     fred.style.animationPlayState = "paused";
+                }
+        }
+                
+        //=================================================================  
+        //========================== TRANSFORMS ===========================
+        //=================================================================
+        
+        var f = document.getElementsByClassName("flip-card-inner");
+        var fb = document.getElementsByClassName("flip-card-back");
+        var leo = document.getElementsByClassName("leonidas-container");
+        function flipping() 
+        {
+            setTimeout(myTimeout1, 500)
+            setTimeout(myTimeout2, 1000) 
+            setTimeout(myTimeout3, 1500)
+            setTimeout(myTimeout4, 2500)
+            setTimeout(myTimeout5, 5000)
+        }
+        function myTimeout1() {
+            f[0].style.transform = "rotateY(180deg)";
+            fb[0].firstElementChild.style.animation = "scaling .4s linear .2s backwards";
+        }
+        function myTimeout2() {
+            f[1].style.transform = "rotateY(180deg)";
+            fb[1].firstElementChild.style.animation = "scaling .4s linear .2s backwards";
+        }
+        function myTimeout3() {
+            f[2].style.transform = "rotateY(180deg)";
+            fb[2].firstElementChild.style.animation = "scaling .4s linear .2s backwards";
+        }
+        function myTimeout4() {
+            leo[0].style.display = "block";
+            leo[0].style.animation = "roar .1s linear both infinite";
+        }
+        function myTimeout5() {
+            leo[0].style.display = "none";
+            for(var i = 0; i < fb.length; i++)
+                {
+                    f[i].style.transform = "rotateY(0deg)";
                 }
         }
         
