@@ -95,14 +95,52 @@ function myTimeout5() {
 //==================== DOM STYLE MANIPULATION ======================
 //================================================================= 
 
-var texts = ["Press the button to create an element", "Why this face?", "You can to it better!", "Now it's better"];
-for (var num = 0; num <= 3; num++) {
-    var par = document.createElement("p");
-    //console.log(par);
-    var div = document.getElementById("dom");
-    div.appendChild(par);
-    console.log(div);
+var parent = document.getElementById("dom");
+function create(text, element, id) {
+    var para = document.createElement(element);
+    para.id = id;
+    var node = document.createTextNode(text);
+    para.appendChild(node);
+    parent.appendChild(para);
 }
+
+function createEmoticon(path, id) {
+    var x = document.createElement("IMG");
+    x.id = id;
+    x.style.position = "relative";
+    x.style.left = "25vw";
+    x.setAttribute("src", "images/"+path+".PNG");
+    x.setAttribute("width", "100");
+    x.setAttribute("height", "100");
+    x.setAttribute("alt", "Not happy little emoticon");
+    parent.appendChild(x);
+}
+
+create("Press the button to create an element", "h3", "");
+create("Click", "button", "start");
+document.getElementById("start").onclick = function () {
+    createEmoticon("fastidiado", "img1")
+    setTimeout(function () { create("Why this face?, give us a little smile!", "p", "p1") }, 2000) };
+
+
+//var startButton = document.getElementById("smile");
+//smile.onclick = function () { create("Why this face? please, show some smile!", "p", "p1") };
+//smile.onclick = function () { create("=)", "button", "change") };
+//var changeButton = document.getElementById("change");
+//changeButton.onclick = function () { createEmoticon("better") }; 
+
+//function remove() {
+//    var child = document.getElementById("p1");
+//    parent.removeChild(child);
+//}
+
+//function replace() {
+//    var node = document.createTextNode("This is new.");
+//    para.appendChild(node);
+
+//    var child = document.getElementById("p1");
+//    parent.replaceChild(para, child);
+//}
 //=================================================================   
 //====================== JAVA OBJECTS & MORE =========================
 //=================================================================
