@@ -102,25 +102,50 @@ function create(text, element, id) {
     var node = document.createTextNode(text);
     para.appendChild(node);
     parent.appendChild(para);
+    return para;
 }
 
-function createEmoticon(path, id) {
+function createEmoticon(path, id, alt) {
     var x = document.createElement("IMG");
     x.id = id;
     x.style.position = "relative";
     x.style.left = "25vw";
-    x.setAttribute("src", "images/"+path+".PNG");
+    x.setAttribute("src", "images/" + path + ".PNG");
     x.setAttribute("width", "100");
     x.setAttribute("height", "100");
-    x.setAttribute("alt", "Not happy little emoticon");
+    x.setAttribute("alt", alt);
     parent.appendChild(x);
+    return x;
 }
+function remove(elId) {
+    var child = document.getElementById(elId);
+    child.parentNode.removeChild(child);
+}
+
+function replace(newElId, oldElId, time) {
+    var para = document.getElementById(newElId);
+    var child = document.getElementById(oldElId);
+    setTimeout(function () { child.parentNode.replaceChild(para, child) }, time);
+}
+
+//function afterClick(path, imgId, alt, text, el, pId, time) {
+//    var startButton = document.getElementById("start");
+//    startButton.onclick = function () {
+//    createEmoticon(path, imgId, alt)
+//    setTimeout(function () { create(text, el, pId) }, time)
+//    };
+//}
 
 create("Press the button to create an element", "h3", "");
 create("Click", "button", "start");
-document.getElementById("start").onclick = function () {
-    createEmoticon("fastidiado", "img1")
-    setTimeout(function () { create("Why this face?, give us a little smile!", "p", "p1") }, 2000) };
+var startButton = document.getElementById("start");
+startButton.onclick = function () {
+    setTimeout(function () { createEmoticon("fastidiado", "img1", "A not happy emiticon") }, 2000);
+    //setTimeout(function () { create("Why this face, show us some smile!", "p", "p1") }, 3000);
+    //setTimeout(function () { remove("img1") }, 4000);
+    //setTimeout(function () { remove("p1") }, 4000);
+};
+
 
 
 //var startButton = document.getElementById("smile");
