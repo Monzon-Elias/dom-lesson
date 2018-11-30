@@ -92,17 +92,17 @@ function myTimeout5() {
 }
 
 //=================================================================  
-//==================== DOM STYLE MANIPULATION ======================
+//==================== DOM MANIPULATION ======================
 //================================================================= 
 
 var parent = document.getElementById("dom");
+
 function create(text, element, id) {
     var para = document.createElement(element);
     para.id = id;
     var node = document.createTextNode(text);
     para.appendChild(node);
     parent.appendChild(para);
-    return para;
 }
 
 function createEmoticon(path, id, alt) {
@@ -115,57 +115,37 @@ function createEmoticon(path, id, alt) {
     x.setAttribute("height", "100");
     x.setAttribute("alt", alt);
     parent.appendChild(x);
-    return x;
-}
-function remove(elId) {
-    var child = document.getElementById(elId);
-    child.parentNode.removeChild(child);
 }
 
-function replace(newElId, oldElId, time) {
+function replace(newElId, oldElId) {
     var para = document.getElementById(newElId);
     var child = document.getElementById(oldElId);
-    setTimeout(function () { child.parentNode.replaceChild(para, child) }, time);
+    child.parentNode.replaceChild(para, child);
 }
-
-//function afterClick(path, imgId, alt, text, el, pId, time) {
-//    var startButton = document.getElementById("start");
-//    startButton.onclick = function () {
-//    createEmoticon(path, imgId, alt)
-//    setTimeout(function () { create(text, el, pId) }, time)
-//    };
-//}
 
 create("Press the button to create an element", "h3", "");
 create("Click", "button", "start");
+
 var startButton = document.getElementById("start");
 startButton.onclick = function () {
-    setTimeout(function () { createEmoticon("fastidiado", "img1", "A not happy emiticon") }, 2000);
-    //setTimeout(function () { create("Why this face, show us some smile!", "p", "p1") }, 3000);
-    //setTimeout(function () { remove("img1") }, 4000);
-    //setTimeout(function () { remove("p1") }, 4000);
-};
-
-
-
-//var startButton = document.getElementById("smile");
-//smile.onclick = function () { create("Why this face? please, show some smile!", "p", "p1") };
-//smile.onclick = function () { create("=)", "button", "change") };
-//var changeButton = document.getElementById("change");
-//changeButton.onclick = function () { createEmoticon("better") }; 
-
-//function remove() {
-//    var child = document.getElementById("p1");
-//    parent.removeChild(child);
-//}
-
-//function replace() {
-//    var node = document.createTextNode("This is new.");
-//    para.appendChild(node);
-
-//    var child = document.getElementById("p1");
-//    parent.replaceChild(para, child);
-//}
+    setTimeout(function () { create(".", "span", "") }, 500)
+    setTimeout(function () { create(".", "span", "") }, 1000)
+    setTimeout(function () { create(".", "span", "") }, 1500)
+    
+    var spans = document.getElementsByTagName("span");
+    setTimeout(function () { for(var a = 0; a < spans.length; a++){spans[a].style.display = "none" }}, 2000)
+    
+    setTimeout(function () { createEmoticon("fastidiado", "img1", "A not so happy emiticon") }, 2000)
+    setTimeout(function () { create("Why this face, show us some smile!", "p", "p1") }, 4000)
+    setTimeout(function () { createEmoticon("better", "img2", "A little more happy emoticon") }, 6000)
+    setTimeout(function () { replace("img2", "img1") }, 6000)
+    setTimeout(function() { create("This is better, but...come on! smile!!", "p", "p2") }, 8000)
+    setTimeout(function () { replace("p2", "p1") }, 8000)
+    setTimeout(function () { createEmoticon("best", "img3", "A very happy emoticon") }, 10000)
+    setTimeout(function () { replace("img3", "img2") }, 10000)
+    setTimeout(function() { create("Yeah!! That's what I'm talking about!", "h4", "p3") }, 11000)
+    setTimeout(function () { replace("p3", "p2") }, 11000) 
+}
 //=================================================================   
 //====================== JAVA OBJECTS & MORE =========================
 //=================================================================
