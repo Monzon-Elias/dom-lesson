@@ -146,6 +146,87 @@ startButton.onclick = function () {
     setTimeout(function() { create("Yeah!! That's what I'm talking about!", "h4", "p3") }, 11000)
     setTimeout(function () { replace("p3", "p2") }, 11000) 
 }
+
+//=================================================================   
+//=============== HTML 5 CANVAS, AUDIO AND VIDEO ==================
+//=================================================================
+
+/*CREATING THE CANVAS*/
+
+var fifth = section[4];
+
+function createCanvas(){
+var x = document.createElement("CANVAS");
+x.id = "galope";
+x.style.position = "absolute";
+x.style.left = "3vw";
+x.style.bottom = "25vw";
+x.width = "300";
+x.height = "300";
+x.style.border = "solid 2px";
+fifth.appendChild(x);
+
+/*CREATING THE MOVIE*/
+
+var canvas = document.getElementById("galope");
+var context = canvas.getContext("2d");
+var img = document.createElement("img");
+img.src = "images/horseMovieNewSize.jpg";
+img.onload = draw;
+    
+var screen = new Path2D();
+screen.rect(0,0, 300, 300);
+context.clip(screen);
+    
+var row = 0, col = 0;
+function draw(){
+    col = col+1;
+    if(col > 3){ col = 0; row += 1;}
+    if(col == 3 && row == 2){ col = 0; row = 0;}
+        
+    context.drawImage(img, 0-290*col, 0-320*row)
+    setTimeout(function() { draw() }, 40)
+    };
+}
+
+/*CREATING THE VIDEO TAG*/
+
+function createVideo(){
+var v = document.createElement("VIDEO");
+v.id = "video";
+v.style.position = "absolute";
+v.style.left = "36vw";
+v.style.bottom = "25vw";
+    if (v.canPlayType("video/mp4")) {
+        v.setAttribute("src","images/nippon_girl.mp4");
+    } else {
+        v.setAttribute("src","");
+    }
+    v.setAttribute("width", "300");
+    v.setAttribute("height", "300");
+    v.setAttribute("controls", "controls");
+    v.autoplay = true;
+fifth.appendChild(v);
+}
+
+/*CREATING THE AUDIO TAG*/
+
+function createAudio(){
+var v = document.createElement("AUDIO");
+v.id = "audio";
+v.style.position = "absolute";
+v.style.left = "68vw";
+v.style.bottom = "25vw";
+    if (v.canPlayType("audio/mpeg")) {
+        v.setAttribute("src","images/Rurouni Kenshin OST 3 - 12-Hiten Mitsurugi Ryuu - Amakakeru Ryuu no Hirameki.mp3");
+    } else {
+        v.setAttribute("src","");
+    }
+    v.setAttribute("width", "300");
+    v.setAttribute("height", "auto");
+    v.setAttribute("controls", "controls");
+fifth.appendChild(v);
+}
 //=================================================================   
 //====================== JAVA OBJECTS & MORE =========================
 //=================================================================
@@ -188,7 +269,7 @@ ricardo.calculateAge();
 //    job: 'teacher'
 //    };
 
-var Person = function (name, yearOfBirth, job) {
+/*var Person = function (name, yearOfBirth, job) {
     this.name = name;
     this.yearOfBirth = yearOfBirth;
     this.job = job;
@@ -210,8 +291,29 @@ carlos.calculateAge();
 
 console.log(elias.lastName);
 console.log(vanessa.lastName);
-console.log(carlos.lastName);
+console.log(carlos.lastName);*/
 
+/*Lets play with boxes then!*/
+
+var pirulo = 
+    { 
+    width: '10em',     
+    height: '8em',
+    color: 'green'
+    };
+console.log(pirulo);
+
+var parent = section[5];
+
+function createBox(width, height, color, id) {
+    var box = document.createElement("div");
+    box.style.width = width;
+    box.style.height = height;
+    box.style.backgroundColor = color;
+    box.id = id;
+    parent.appendChild(box);
+}
+createBox("10em", "10em", "green", "1box");
 //=================================================================      
 //======================== Object.create=========================
 //=================================================================       
