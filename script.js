@@ -160,7 +160,7 @@ var x = document.createElement("CANVAS");
 x.id = "galope";
 x.style.position = "absolute";
 x.style.left = "3vw";
-x.style.bottom = "25vw";
+x.style.bottom = "30vw";
 x.width = "300";
 x.height = "300";
 x.style.border = "solid 2px";
@@ -194,9 +194,10 @@ function draw(){
 function createVideo(){
 var v = document.createElement("VIDEO");
 v.id = "video";
+v.zIndex = 1;
 v.style.position = "absolute";
 v.style.left = "36vw";
-v.style.bottom = "25vw";
+v.style.bottom = "30vw";
     if (v.canPlayType("video/mp4")) {
         v.setAttribute("src","images/nippon_girl.mp4");
     } else {
@@ -216,7 +217,7 @@ var v = document.createElement("AUDIO");
 v.id = "audio";
 v.style.position = "absolute";
 v.style.left = "68vw";
-v.style.bottom = "25vw";
+v.style.bottom = "30vw";
     if (v.canPlayType("audio/mpeg")) {
         v.setAttribute("src","images/Rurouni Kenshin OST 3 - 12-Hiten Mitsurugi Ryuu - Amakakeru Ryuu no Hirameki.mp3");
     } else {
