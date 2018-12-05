@@ -27,6 +27,9 @@ function change() {
         section[num].firstElementChild.style.background = "rgba(0, 0, 0, 0.5)";
         section[num].firstElementChild.style.padding = "20px";
         section[num].firstElementChild.style.fontSize = "1.5em";
+        section[num].firstElementChild.style.maxHeight = "100vh";
+    
+        
     }
 }
 
@@ -128,13 +131,12 @@ create("Click", "button", "start");
 
 var startButton = document.getElementById("start");
 startButton.onclick = function () {
-    setTimeout(function () { create(".", "span", "") }, 500)
+setTimeout(function () { create(".", "span", "") }, 500)
     setTimeout(function () { create(".", "span", "") }, 1000)
     setTimeout(function () { create(".", "span", "") }, 1500)
     
     var spans = document.getElementsByTagName("span");
     setTimeout(function () { for(var a = 0; a < spans.length; a++){spans[a].style.display = "none" }}, 2000)
-    
     setTimeout(function () { createEmoticon("fastidiado", "img1", "A not so happy emiticon") }, 2000)
     setTimeout(function () { create("Why this face, show us some smile!", "p", "p1") }, 4000)
     setTimeout(function () { createEmoticon("better", "img2", "A little more happy emoticon") }, 6000)
@@ -228,6 +230,57 @@ v.style.bottom = "30vw";
     v.setAttribute("controls", "controls");
 fifth.appendChild(v);
 }
+
+//=================================================================   
+//========================= JASON & AJAX ==========================
+//=================================================================
+var jasonSection = document.getElementById("weatherContainer");
+jasonSection.style.fontSize = ".9em";
+jasonSection.style.textAlign = "center";
+jasonSection.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+
+//FORECAST REXBURG IDAHO//
+var request = new XMLHttpRequest();
+request.open('GET', '//api.wunderground.com/api/2bd1927be404d108/forecast/q/ID/Rexburg.json', true);
+request.send();
+
+request.onload = function () {
+    var RexburgWeather = JSON.parse(request.responseText);
+    console.log(RexburgWeather);
+
+    document.getElementById("textForecast").innerHTML = RexburgWeather.forecast.txt_forecast.forecastday[0].fcttext;
+}
+
+//CONDITIONS REXBURG IDAHO//
+
+var weatherObj = new XMLHttpRequest();
+weatherObj.open('GET', '//api.wunderground.com/api/2bd1927be404d108/conditions/q/ID/Rexburg.json', true);
+
+weatherObj.send();
+weatherObj.onload = function () {
+var weatherInfo = JSON.parse(weatherObj.responseText);
+console.log(weatherInfo);
+    
+document.getElementById('place').innerHTML = weatherInfo.current_observation.display_location.full; 
+//City-State
+
+document.getElementById('currentTemp').innerHTML = weatherInfo.current_observation.temp_f; //Temperature in Fahrenheit.
+
+document.getElementById('currentWeather').innerHTML = weatherInfo.current_observation.weather; //Current weather status.
+    
+document.getElementById('windSpeed').innerHTML = weatherInfo.current_observation.wind_mph; //Wind Speed in miles per hour.
+    
+var icon_path = weatherInfo.current_observation.icon_url;
+var urlString = document.location.href;
+console.log(urlString);
+var found = urlString.indexOf("https");
+console.log(found);
+if (found >= 0) {
+    icon_path = icon_path.replace("http", "https");
+    }
+    document.getElementById('wi').src = icon_path;
+}
+
 //=================================================================   
 //====================== JAVA OBJECTS & MORE =========================
 //=================================================================
@@ -304,15 +357,13 @@ var pirulo =
     };
 console.log(pirulo);
 
-var parent = section[5];
-
 function createBox(width, height, color, id) {
-    var box = document.createElement("div");
+    var box = document.createElement("DIV");
     box.style.width = width;
     box.style.height = height;
     box.style.backgroundColor = color;
     box.id = id;
-    parent.appendChild(box);
+    section[6].appendChild(box);
 }
 createBox("10em", "10em", "green", "1box");
 //=================================================================      

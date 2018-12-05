@@ -15,7 +15,7 @@
         <button onclick="change()">Try it</button>
     </div>
 
-    <section>
+    <section id="layout">
         <div>
             <h1>Manipulating CSS Properties Using JavaScript</h1>
             <p>
@@ -23,7 +23,7 @@
             </p>
         </div>
     </section>
-    <section>
+    <section id="animations">
         <div>
             <img class="dancer" src="images/dancer.gif" alt="Fred Astaire hat and cane dancer">
             <h1>ANIMATIONS</h1>
@@ -31,7 +31,7 @@
             <p>Using two animations simultaneously, we put Fred to dance. Later I think adding an audio. Press the button to see/stop the dancing show. Through script, I was able to toggle two behaviors using the same button, even the button text.</p>
         </div>
     </section>
-    <section>
+    <section id="transforms">
         <div>
             <div class="flipping-cards-container">
                 <!--THIS! -->
@@ -76,7 +76,7 @@
 
         </div>
     </section>
-    <section>
+    <section id="ccdD">
         <div id="dom">
             <h1>CREATE, CHANGE AND DELETE AN ELEMENT WITH DOM!</h1>
             <p>
@@ -97,15 +97,24 @@
             </p>
         </div>
     </section>
-    <section>
+    <section id="jasonAjax">
         <div>
-            <h1>NEXT SECION COMING SOON!</h1>
+            <h1>JASON AND AJAX!</h1>
+            <div id="weatherContainer">
+                <h2>Weather Summary</h2>    
+                <h3 id="place"></h3>
+                <p>Forecast: <span id="textForecast"></span></p>
+                <p> Wind Speed: <span id="windSpeed"></span> mph</p>
+                <p>Current temperature <span id="currentTemp"></span>&deg;</p>
+                <p>Current Weather: <span id="currentWeather"></span></p>
+                <img src="images/placeholder.png" alt="current weather icon" id="wi" class="weatherIcon">
+            </div>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                In this section I use AJAX for requestion JSON data from the Open Weather Map Web Site, using my own Appi key. With JavaScript I display this info into this section, inclusive a nice weather icon.
             </p>
         </div>
     </section>
-    <section>
+    <section id="javaScriptObjects">
         <div>
             <h1>NEXT SECION COMING SOON!</h1>
             <p>
