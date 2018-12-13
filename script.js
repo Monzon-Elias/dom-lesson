@@ -282,6 +282,66 @@ if (found >= 0) {
 }
 
 //=================================================================   
+//========================= JASON ==========================
+//=================================================================
+
+    var state = document.getElementById("state").value;
+    var city = document.getElementById("city").value;
+    
+    //STATE AND CITY JSON//
+    var re = new XMLHttpRequest();
+    re.open('GET', '//github.com/cschoi3/US-states-and-cities-json/blob/master/data.json', 'true');
+    re.send();
+
+    re.onload = function () {
+        var cityWeather = JSON.parse(re.responseText);
+        console.log(cityWeather);
+
+    }
+
+    /* //FORECAST CITY//
+    var request = new XMLHttpRequest();
+    request.open('GET', '//api.wunderground.com/api/2bd1927be404d108/forecast/q/'+state+'/'+city+'.json', true);
+    request.send();
+
+    request.onload = function () {
+        var RexburgWeather = JSON.parse(request.responseText);
+        console.log(RexburgWeather);
+
+        document.getElementById("textForecast").innerHTML = RexburgWeather.forecast.txt_forecast.forecastday[0].fcttext;
+    }
+
+    //CITY CONDITIONS//
+
+    var weatherObj = new XMLHttpRequest();
+    weatherObj.open('GET', '//api.wunderground.com/api/2bd1927be404d108/conditions/q/'+state+'/'+city+'.json', true);
+
+    weatherObj.send();
+    weatherObj.onload = function () {
+    var weatherInfo = JSON.parse(weatherObj.responseText);
+    console.log(weatherInfo);
+
+    document.getElementById('place').innerHTML = weatherInfo.current_observation.display_location.full; 
+    //City-State
+
+    document.getElementById('currentTemp').innerHTML = weatherInfo.current_observation.temp_f; //Temperature in Fahrenheit.
+
+    document.getElementById('currentWeather').innerHTML = weatherInfo.current_observation.weather; //Current weather status.
+
+    document.getElementById('windSpeed').innerHTML = weatherInfo.current_observation.wind_mph; //Wind Speed in miles per hour.
+
+    var icon_path = weatherInfo.current_observation.icon_url;
+    var urlString = document.location.href;
+    console.log(urlString);
+    var found = urlString.indexOf("https");
+    console.log(found);
+    if (found >= 0) {
+        icon_path = icon_path.replace("http", "https");
+        }
+        document.getElementById('wi').src = icon_path;
+    }*/
+
+//=================================================================   
 //====================== JAVA OBJECTS & MORE =========================
 //=================================================================
 
