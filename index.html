@@ -116,31 +116,13 @@
     </section>
     <section id="json">
         <div>
-            <h1>JSON!</h1>
-            <div>
-                <div id="form">
-                    <form>
-                        City:<br>
-                        <input id="city" type="text" name="city">
-                        <br>
-                        State:<br>
-                        <input id="state" type="text" name="state">
-                        <br>
-                        <input onclick="seeWeather()" id="go" type="submit" name="submit">
-                    </form>
-                </div>
-                <div id="weatherContainer2">
-                    <h2>Weather Summary</h2>    
-                    <h3 id="place2"></h3>
-                    <p>Forecast: <span id="textForecast2"></span></p>
-                    <p>Wind Speed: <span id="windSpeed2"></span> mph</p>
-                    <p>Current temperature <span id="currentTemp2"></span>&deg;</p>
-                    <p>Current Weather: <span id="currentWeather2"></span></p>
-                    <img src="images/placeholder.png" alt="current weather icon" id="wi2">
-                </div>
+            <div id="jsonBox">
+                <div id="dropDownHome"></div>
+                <div id="flags"></div>
             </div>
+            <h1>JSON!</h1>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                The drop-down list is created dynamically from a JSON file. Then, depending on the option chosen, an image is created with javaScript, whose source is on GitHub, and inserted into a div contiguous to the one in the drop-down list. So that the images will not be created one below the other, the position property of the image is "absolute". It took me many hours to realize that this was a good solution to this problem. The solution I found for the flags to appear is not perfect, therefore, there are some that do not show.
             </p>
         </div>
     </section>

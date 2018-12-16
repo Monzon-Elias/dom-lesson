@@ -285,61 +285,45 @@ if (found >= 0) {
 //========================= JASON ==========================
 //=================================================================
 
-    var state = document.getElementById("state").value;
-    var city = document.getElementById("city").value;
+var xmlhttp, myObj, x, txt, mami, papi, validate;
+
+/*obj = { table: "countries", limit: 10 };
+dbParam = JSON.stringify(obj);*/
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+    myObj = JSON.parse(this.responseText);
     
-    //STATE AND CITY JSON//
-    var re = new XMLHttpRequest();
-    re.open('GET', '//github.com/cschoi3/US-states-and-cities-json/blob/master/data.json', 'true');
-    re.send();
+    //DYNAMIC DROP DOWN SELECT ELEMENT CREATION
+    txt = "<select id='dropDown' onchange='createImage()'>"
+    txt += "<option>Choose a Country:</option>"
+      
+    for (x in myObj) {
+      txt += "<option>" + myObj[x] + "</option>";
+    } 
+    txt += "</select>"
+    document.getElementById("dropDownHome").innerHTML = txt; 
+  }
+};
 
-    re.onload = function () {
-        var cityWeather = JSON.parse(re.responseText);
-        console.log(cityWeather);
+xmlhttp.open("GET", "countries.json", true);
+xmlhttp.send();
 
-    }
-
-    /* //FORECAST CITY//
-    var request = new XMLHttpRequest();
-    request.open('GET', '//api.wunderground.com/api/2bd1927be404d108/forecast/q/'+state+'/'+city+'.json', true);
-    request.send();
-
-    request.onload = function () {
-        var RexburgWeather = JSON.parse(request.responseText);
-        console.log(RexburgWeather);
-
-        document.getElementById("textForecast").innerHTML = RexburgWeather.forecast.txt_forecast.forecastday[0].fcttext;
-    }
-
-    //CITY CONDITIONS//
-
-    var weatherObj = new XMLHttpRequest();
-    weatherObj.open('GET', '//api.wunderground.com/api/2bd1927be404d108/conditions/q/'+state+'/'+city+'.json', true);
-
-    weatherObj.send();
-    weatherObj.onload = function () {
-    var weatherInfo = JSON.parse(weatherObj.responseText);
-    console.log(weatherInfo);
-
-    document.getElementById('place').innerHTML = weatherInfo.current_observation.display_location.full; 
-    //City-State
-
-    document.getElementById('currentTemp').innerHTML = weatherInfo.current_observation.temp_f; //Temperature in Fahrenheit.
-
-    document.getElementById('currentWeather').innerHTML = weatherInfo.current_observation.weather; //Current weather status.
-
-    document.getElementById('windSpeed').innerHTML = weatherInfo.current_observation.wind_mph; //Wind Speed in miles per hour.
-
-    var icon_path = weatherInfo.current_observation.icon_url;
-    var urlString = document.location.href;
-    console.log(urlString);
-    var found = urlString.indexOf("https");
-    console.log(found);
-    if (found >= 0) {
-        icon_path = icon_path.replace("http", "https");
-        }
-        document.getElementById('wi').src = icon_path;
-    }*/
+//CREATE FLAGS DYNAMICALLY
+var flags = document.getElementById("flags");
+function createImage() {
+    mami = document.getElementById("dropDown").value;
+    if(mami){mami = mami[0]+mami[1];}
+    console.log(mami.toLowerCase());
+    papi = mami.toLowerCase();
+    
+    var x = document.createElement("IMG");
+    validate = x.setAttribute("src", "https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/"+papi+".png");
+    x.style.position = "absolute";
+    x.setAttribute("width", "250");
+    x.setAttribute("height", "175");
+    flags.append(x);  
+}
 
 //=================================================================   
 //====================== JAVA OBJECTS & MORE =========================
@@ -423,7 +407,7 @@ function createBox(width, height, color, id) {
     box.style.height = height;
     box.style.backgroundColor = color;
     box.id = id;
-    section[6].appendChild(box);
+    section[7].appendChild(box);
 }
 createBox("10em", "10em", "green", "1box");
 //=================================================================      
