@@ -17,9 +17,10 @@
 
     <section id="layout">
         <div>
-            <h1>Manipulating CSS Properties Using JavaScript</h1>
+            <h1>Manipulating CSS Properties Using JavaScript, and JavaScript</h1>
             <p>
-                In this section, the entire layout was created using only javaScript. There is no stylesheet to reference. A Google-Fonts font was imported, zero margin was placed on the body. The thirteen sections will accommodate the thirteen topics that must be covered in the course. Each section has a background-image, creating a nice paralax effect.
+                In this section, the entire layout was created using only javaScript. There is no stylesheet to reference. A Google-Fonts font was imported, zero margin was placed on the body. The thirteen sections will accommodate the thirteen topics that must be covered in the course. Each section has a background-image, creating a nice paralax effect. Using the pseudo element insert before, I insert an "h1" element at the beginning of each section in the form of a counter, making the role of the page number (in this case: section number). This is a great help to guide all the work.
+
             </p>
         </div>
     </section>
@@ -128,9 +129,22 @@
     </section>
     <section id="javaScriptObjects">
         <div>
-            <h1>NEXT SECION COMING SOON!</h1>
+            <div id="objects">
+                <div id="eform">
+                    Name<br>
+                    <input id="ename" type="text" name="fname" autofocus min="1" max="10" required><br>
+                    Birth Year<br>
+                    <input id="ebirth" type="number" name="birth" min="1954" max="2000" required><br>
+                    Job<br>
+                    <input id="ejob" type="text" name="fjob" min="1" max="15" required><br>
+                    <!-- SUBMIT BUTTON -->
+                    <input type="submit" name="createRow" value="Create Employee" onclick="dyTable()">
+                </div>
+                <div id="dytable"></div>
+            </div>
+            <h1>JAVASCRIPT OBJECTS AND MORE!</h1>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                In this section I create a new object, and add it to a table that already has three Person type objects. The table will show after adding the new object. 
             </p>
         </div>
     </section>

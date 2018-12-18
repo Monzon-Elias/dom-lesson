@@ -1,6 +1,6 @@
 // JavaScript source code
 //=================================================================   
-//================== PAGE LAYOUT WITH JAVASCRIPT ==================
+//========== PAGE LAYOUT WITH JAVASCRIPT, AND JAVASCRIPT ==========
 //================================================================= 
 var section = document.getElementsByTagName("section");
 for (var num = 0; num < section.length; num++) {
@@ -28,8 +28,11 @@ function change() {
         section[num].firstElementChild.style.padding = "20px";
         section[num].firstElementChild.style.fontSize = "1.5em";
         section[num].firstElementChild.style.maxHeight = "100vh";
-    
-        
+        section[num].firstElementChild.style.maxHeight = "100vh";
+        var newItem = document.createElement("H1");       // Create a H1 node
+        var textnode = document.createTextNode(num+1);  // Create a text node
+        newItem.appendChild(textnode);                    // Append the text to the section
+        section[num].firstElementChild.insertBefore(newItem, section[num].firstElementChild.childNodes[0]);  // Insert h1 before the first child of the section
     }
 }
 
@@ -329,105 +332,73 @@ function createImage() {
 //====================== JAVA OBJECTS & MORE =========================
 //=================================================================
 
-var elias =
-{
-    name: 'elias',
-    yearOfBirth: 1984,
-    calculateAge: function () {
-        console.log(this);
-        console.log(2018 - this.yearOfBirth);
-
-        function innerFunction() {
-            console.log(this);
-        }
-        innerFunction(); //raro no? esta función pertenece a WINDOWS OBJECT
-    }
-}
-
-elias.calculateAge();
-
-var ricardo =
-{
-    name: 'Ricardo',
-    yearOfBirth: 1980
-};
-
-ricardo.calculateAge = elias.calculateAge;
-ricardo.calculateAge();
-
-
 //=================================================================      
 //============== Function Constructor & Inheritance================
 //=================================================================
 
-//var pirulo = 
-//    { 
-//    name: 'Pirulo',     
-//    yearOfBirth: 1990,
-//    job: 'teacher'
-//    };
-
-/*var Person = function (name, yearOfBirth, job) {
+var Person = function (name, yearOfBirth, job) {
     this.name = name;
     this.yearOfBirth = yearOfBirth;
     this.job = job;
 }
 
-Person.prototype.calculateAge = function () {
-    console.log(2018 - this.yearOfBirth);
-};
+Person.prototype.calculateAge = function () {return 2018 - this.yearOfBirth};
+Person.prototype.yearsToRetire = function() {return 65 - (2018 - this.yearOfBirth)};
 
-Person.prototype.lastName = 'Smith'; //todos son hermanos ahora
+Person.prototype.funnyComment = function() { if(this.yearOfBirth > 1998){return "You have more years of work ahead than years of life!"} else if(this.yearOfBirth > 1964 && this.yearOfBirth < 1998){return "You are on the plateau of your working life!"}  else if(this.yearOfBirth > 1953 && this.yearOfBirth < 1964){ return "You are going down the hill of your working life!"} else{ return "This folk shouldn't be here!"}};
 
-var elias = new Person('Elías', 1990, 'teacher');
+var elias = new Person('Elias', 1990, 'teacher');
 var vanessa = new Person('Vanessa', 1969, 'designer');
 var carlos = new Person('Carlos', 1948, 'retired');
+var lulu;
+//FROM THE SECTION 8 FORM
 
-elias.calculateAge();
-vanessa.calculateAge();
-carlos.calculateAge();
-
-console.log(elias.lastName);
-console.log(vanessa.lastName);
-console.log(carlos.lastName);*/
-
-/*Lets play with boxes then!*/
-
-var pirulo = 
-    { 
-    width: '10em',     
-    height: '8em',
-    color: 'green'
-    };
-console.log(pirulo);
-
-function createBox(width, height, color, id) {
-    var box = document.createElement("DIV");
-    box.style.width = width;
-    box.style.height = height;
-    box.style.backgroundColor = color;
-    box.id = id;
-    section[7].appendChild(box);
+//CREATING A DYNAMIC TABLE
+function dyTable(){
+txt = "<table border='1'>"
+    txt += "<tr>"
+    txt += "<th>First Name</th>"
+    txt += "<th>Birth Year</th>"
+    txt += "<th>Job</th>" 
+    txt += "<th>Time to Retire</th>"
+    txt += "<th>Funny Comment</th>"
+    txt += "</tr>"
+    txt += "<tr>"
+    txt += "<td>" + elias.name + "</td>"
+    txt += "<td>" + elias.yearOfBirth + "</td>"
+    txt += "<td>" + elias.job + "</td>"
+    txt += "<td>" + elias.yearsToRetire() + "</td>"
+    txt += "<td>" + elias.funnyComment() + "</td>"
+    txt += "</tr>"
+    txt += "<tr>"
+    txt += "<td>" + vanessa.name + "</td>"
+    txt += "<td>" + vanessa.yearOfBirth + "</td>"
+    txt += "<td>" + vanessa.job + "</td>"
+    txt += "<td>" + vanessa.yearsToRetire() + "</td>"
+    txt += "<td>" + vanessa.funnyComment() + "</td>"
+    txt += "</tr>"
+    txt += "<tr>"
+    txt += "<td>" + carlos.name + "</td>"
+    txt += "<td>" + carlos.yearOfBirth + "</td>"
+    txt += "<td>" + carlos.job + "</td>"
+    txt += "<td>" + carlos.yearsToRetire() + "</td>"
+    txt += "<td>" + carlos.funnyComment() + "</td>"
+    txt += "</tr>"
+    var ename = document.getElementById("ename").value;
+    var ebirth = document.getElementById("ebirth").value;
+    var ejob = document.getElementById("ejob").value;
+    console.log(ename, ebirth, ejob);
+    var newEmployee = new Person(ename, ebirth, ejob);
+    txt += "<tr>"
+    txt += "<td>" + newEmployee.name + "</td>"
+    txt += "<td>" + newEmployee.yearOfBirth + "</td>"
+    txt += "<td>" + newEmployee.job + "</td>"
+    txt += "<td>" + newEmployee.yearsToRetire() + "</td>"
+    txt += "<td>" + newEmployee.funnyComment() + "</td>"
+    txt += "</tr>"
+    console.log(newEmployee);
+    
+txt += "</table>";
+    
+document.getElementById("dytable").innerHTML = txt;
 }
-createBox("10em", "10em", "green", "1box");
-//=================================================================      
-//======================== Object.create=========================
-//=================================================================       
-//Create object that inherit from a prototype
-
-// 1st. we create the object prototype
-// then we create objects that inherit from the prototype
-
-var personPrototype = // is in lowercase because is not a function constructor
-{
-    calculateAge: function () {
-        console.log(2018 - this.yearOfBirth);
-    }
-};
-
-var ricardo = Object.create(personPrototype,
-    {
-        name: { value: 'Ricardo' },
-        yearOfBirth: { value: 1980 },
-        job: { value: 'designer' }
-    });
