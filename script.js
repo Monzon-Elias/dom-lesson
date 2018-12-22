@@ -28,7 +28,7 @@ function change() {
         section[num].firstElementChild.style.padding = "20px";
         section[num].firstElementChild.style.fontSize = "1.5em";
         section[num].firstElementChild.style.maxHeight = "100vh";
-        section[num].firstElementChild.style.maxHeight = "100vh";
+        
         var newItem = document.createElement("H1");       // Create a H1 node
         var textnode = document.createTextNode(num+1);  // Create a text node
         newItem.appendChild(textnode);                    // Append the text to the section
@@ -329,11 +329,7 @@ function createImage() {
 }
 
 //=================================================================   
-//====================== JAVA OBJECTS & MORE =========================
-//=================================================================
-
-//=================================================================      
-//============== Function Constructor & Inheritance================
+//====================== JAVA OBJECTS & MORE ======================
 //=================================================================
 
 var Person = function (name, yearOfBirth, job) {
@@ -350,8 +346,6 @@ Person.prototype.funnyComment = function() { if(this.yearOfBirth > 1998){return 
 var elias = new Person('Elias', 1990, 'teacher');
 var vanessa = new Person('Vanessa', 1969, 'designer');
 var carlos = new Person('Carlos', 1948, 'retired');
-var lulu;
-//FROM THE SECTION 8 FORM
 
 //CREATING A DYNAMIC TABLE
 function dyTable(){

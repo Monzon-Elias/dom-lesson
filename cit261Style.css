@@ -114,7 +114,7 @@ button {
 }
 
 /*===============================================================================
-================================== SECTION 6 ====================================
+================================== SECTION 7 ====================================
 ==================================== JASON ======================================
 =================================================================================
 */
@@ -137,7 +137,7 @@ button {
 }
 
 /*===============================================================================
-================================== SECTION 7 ====================================
+================================== SECTION 8 ====================================
 ============================ JAVASCRIPT AND OBJECTS =============================
 =================================================================================
 */
@@ -170,3 +170,270 @@ input[type=submit]:hover, input[type=text]:hover, input[type=number]:hover, sele
 {
   box-shadow: 3px 4px 8px 0 rgba(0,0,0,.6);
 }
+
+/*===============================================================================
+================================== SECTION 9 ====================================
+================================= TRANSITIONS ===================================
+=================================================================================
+*/
+
+#lessMargin{margin-bottom: 0}
+#lessMargin+p{margin-top:0}
+
+.container
+{
+  position: relative;
+  width: 1000px;
+  height: 400px;
+  display: flex;
+}
+.container .box
+{
+  position: relative;
+  width: 250px;
+  height: 400px;
+  background: #ccc;
+  transition: .5s;
+}
+.container .box:hover
+{
+  transform: scale(1.1);
+  z-index: 1;
+  box-shadow: 0 5px 20px rgba(0,0,0,1);
+}
+.container .box .thumb
+{
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.container .box:nth-child(odd) .thumb
+{
+  bottom: 0;
+  left: 0;
+}
+.container .box .thumb img
+{
+  width: 100%;
+  height: 100%
+}
+.container .box .details
+{
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #262626;
+}
+/*BOX COLORS*/
+.container .box:nth-child(even) .details
+{
+  bottom: 0;
+  left: 0;
+}
+.container .box:nth-child(1) .details
+{
+  background: #8553cd;
+}
+.container .box:nth-child(2) .details
+{
+  background: #fe8f01;
+}
+.container .box:nth-child(3) .details
+{
+  background: #79d400;
+}
+.container .box:nth-child(4) .details
+{
+  background: #ff3b34;
+}
+.container .box .details .content
+{
+  position: absolute;
+  top: calc(50% + 16px);
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: .5s;
+}
+.container .box:hover .details .content
+{
+  top: calc(50%);
+}
+.container .box .details .content .fa
+{
+  font-size: 80px;
+  color: #fff;
+}
+.container .box .details .content h3
+{
+  margin: 0;
+  padding: 10px 0;
+  color: #fff;
+}
+.container .box .details .content a
+{
+  display: inline-block;
+  padding: 5px 20px;
+  color: #fff;
+  border: 2px solid #fff;
+  text-decoration: none;
+  transition: .5s;
+  border-radius: 20px;
+  transform: scale(0);
+}
+.container .box:hover .details .content a
+{
+  transform: scale(1);
+}
+.container .box .details .content a:hover
+{
+  background: #fff;
+  color: #262626;
+}
+
+/*RESPONSIVNESS*/
+
+@media (max-width: 1000px)
+{
+  .container
+  {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .container .box
+  {
+    height: 200px;
+  }
+  .container .box .thumb
+  {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) 
+{
+  .container 
+  {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .container .box 
+  {
+    width: 50%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) 
+{
+  .container .box 
+  {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+    /*
+===============================================================================
+================================== SECTION 10 =====================================
+====================== TRANSITIONS, ANIMATIONS & TRANSFORMS =======================
+===================================================================================
+*/
+
+    .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 100px;
+        height: 100px;
+        animation: animate 1s linear infinite;
+    }
+
+        .loader span {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #f00;
+            animation: rotate 1s linear infinite;
+        }
+
+            .loader span:nth-child(1) {
+                top: 0;
+                left: 0;
+                background: #f79f1f;
+            }
+
+            .loader span:nth-child(2) {
+                top: 0;
+                right: 0;
+                background: #12cbc4;
+            }
+
+            .loader span:nth-child(3) {
+                bottom: 0;
+                left: 0;
+                background: #ed4c67;
+            }
+
+            .loader span:nth-child(4) {
+                bottom: 0;
+                right: 0;
+                background: #a3cb38;
+            }
+
+    @keyframes animate {
+        0% {
+            width: 100px;
+            height: 100px;
+        }
+
+        10% {
+            width: 100px;
+            height: 100px;
+        }
+
+        50% {
+            width: 150px;
+            height: 150px;
+        }
+
+        90% {
+            width: 100px;
+            height: 100px;
+        }
+
+        100% {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        10% {
+            transform: rotate(0deg);
+        }
+
+        60% {
+            transform: rotate(90deg);
+        }
+
+        90% {
+            transform: rotate(90deg);
+        }
+
+        100% {
+            transform: rotate(90deg);
+        }
+    }
+  
