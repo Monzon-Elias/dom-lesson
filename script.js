@@ -396,3 +396,4 @@ txt += "</table>";
     
 document.getElementById("dytable").innerHTML = txt;
 }
+

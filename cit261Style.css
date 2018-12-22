@@ -346,94 +346,258 @@ input[type=submit]:hover, input[type=text]:hover, input[type=number]:hover, sele
 ===================================================================================
 */
 
-    .loader {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-        width: 100px;
-        height: 100px;
-        animation: animate 1s linear infinite;
+.loader 
+{
+  position: absolute;
+  left: 20%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 100px;
+  height: 100px;
+  animation: animate 1s linear infinite;
+  transition: left 2s;
+}
+
+.loader:active
+{
+     left: 80%;
+}
+
+.loader span 
+{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #f00;
+  animation: rotation 1s .1s linear infinite;
+}
+
+.loader span:nth-child(1) 
+{
+  top: 0;
+  left: 0;
+  background: #f79f1f;
+}
+
+.loader span:nth-child(2) 
+{
+  top: 0;
+  right: 0;
+  background: #12cbc4;
+}
+
+.loader span:nth-child(3) 
+{
+  bottom: 0;
+  left: 0;
+  background: #ed4c67;
+}
+
+.loader span:nth-child(4) 
+{
+  bottom: 0;
+  right: 0;
+  background: #a3cb38;
+}
+
+@keyframes animate 
+{
+0% 
+  {
+    width: 100px;
+    height: 100px;
+  }
+
+10% 
+  {
+    width: 100px;
+    height: 100px;
+  }
+
+  50% 
+  {
+    width: 150px;
+    height: 150px;
+  }
+
+  90% 
+  {
+    width: 100px;
+    height: 100px;
+  }
+
+  100% 
+  {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@keyframes rotation {
+  0% 
+  {
+    transform: rotate(0deg);
+  }
+
+  10% 
+  {
+    transform: rotate(0deg);
+  }
+
+  60% 
+  {
+    transform: rotate(90deg);
+  }
+
+  90% 
+  {
+    transform: rotate(90deg);
+  }
+
+  100% 
+  {
+    transform: rotate(90deg);
+  }
+}
+  /*SECOND ANIMATION*/
+
+.loader2
+{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 305px;
+    height: 305px;
+    transition: transform 2s;
+}
+.loader2 span
+{
+    position: absolute;
+    background: rgba(255,255,255,.1);
+    box-shadow: 0 0 25px rgba(0,0,0,.5);
+    border: 10px solid rgba(255,255,255,.2);
+    border-top: 10px solid rgba(255,255,255,1);
+    border-bottom: 10px solid rgba(255,255,255,1);
+    animation: animate2 10s alternate infinite;
+}
+.loader2:active
+{
+  transform:scale(2,2);
+}
+
+.loader2 span:nth-child(1)
+{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    animation-delay: -0.1s;
+}
+.loader2 span:nth-child(2)
+{
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    animation-delay: -0.2s;
+}
+.loader2 span:nth-child(3)
+{
+    top: 40px;
+    left: 40px;
+    bottom: 40px;
+    right: 40px;
+    animation-delay: -0.3s;
+}
+.loader2 span:nth-child(4)
+{
+    top: 60px;
+    left: 60px;
+    bottom: 60px;
+    right: 60px;
+    animation-delay: -0.4s;
+}
+.loader2 span:nth-child(5)
+{
+    top: 80px;
+    left: 80px;
+    bottom: 80px;
+    right: 80px;
+    animation-delay: -0.5s;
+}
+.loader2 span:nth-child(6)
+{
+    top: 100px;
+    left: 100px;
+    bottom: 100px;
+    right: 100px;
+    animation-delay: -0.6s;
+}
+.loader2 span:nth-child(7)
+{
+    top: 120px;
+    left: 120px;
+    bottom: 120px;
+    right: 120px;
+    animation-delay: -0.7s;
+}
+.loader2 span:nth-child(8)
+{
+    top: 140px;
+    left: 140px;
+    bottom: 140px;
+    right: 140px;
+    animation-delay: -0.8s;
+}
+
+@keyframes animate2
+{
+    0%
+    {
+        transform: rotate(0deg);
+        background: rgba(255,0,0,.2);
     }
-
-        .loader span {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: #f00;
-            animation: rotate 1s linear infinite;
-        }
-
-            .loader span:nth-child(1) {
-                top: 0;
-                left: 0;
-                background: #f79f1f;
-            }
-
-            .loader span:nth-child(2) {
-                top: 0;
-                right: 0;
-                background: #12cbc4;
-            }
-
-            .loader span:nth-child(3) {
-                bottom: 0;
-                left: 0;
-                background: #ed4c67;
-            }
-
-            .loader span:nth-child(4) {
-                bottom: 0;
-                right: 0;
-                background: #a3cb38;
-            }
-
-    @keyframes animate {
-        0% {
-            width: 100px;
-            height: 100px;
-        }
-
-        10% {
-            width: 100px;
-            height: 100px;
-        }
-
-        50% {
-            width: 150px;
-            height: 150px;
-        }
-
-        90% {
-            width: 100px;
-            height: 100px;
-        }
-
-        100% {
-            width: 100px;
-            height: 100px;
-        }
+    20%
+    {
+        background: rgba(255,255,0,.2);
     }
-
-    @keyframes rotate {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        10% {
-            transform: rotate(0deg);
-        }
-
-        60% {
-            transform: rotate(90deg);
-        }
-
-        90% {
-            transform: rotate(90deg);
-        }
-
-        100% {
-            transform: rotate(90deg);
-        }
+    40%
+    {
+        background: rgba(0,255,0,.2);
     }
-  
+    60%
+    {
+        background: rgba(255,0,255,.2);
+    }
+    80%
+    {
+        background: rgba(0,255,255,.2);
+    }
+    100%
+    {
+        transform: rotate(720deg);
+        background: rgba(255,0,0,.2);
+    }
+}
+
+#trTrAn:before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: 100vh solid transparent;
+  border-left: 100vh solid #fff;
+  opacity: .1;
+}
+
+#trTrAn:after
+{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top: 100vh solid transparent;
+  border-right: 100vh solid #fff;
+  opacity: .1;
+}
