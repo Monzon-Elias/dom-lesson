@@ -601,3 +601,13 @@ input[type=submit]:hover, input[type=text]:hover, input[type=number]:hover, sele
   border-right: 100vh solid #fff;
   opacity: .1;
 }
+
+
+
+#pizarra
+{
+  position: relative;
+  width: 500px;
+  height: 300px;
+  border: 2px solid #fff;
+}

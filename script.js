@@ -160,78 +160,80 @@ setTimeout(function () { create(".", "span", "") }, 500)
 
 var fifth = section[4];
 
+
+var padre = fifth;
 function createCanvas(){
-var x = document.createElement("CANVAS");
-x.id = "galope";
-x.style.position = "absolute";
-x.style.left = "3vw";
-x.style.bottom = "30vw";
-x.width = "300";
-x.height = "300";
-x.style.border = "solid 2px";
-fifth.appendChild(x);
+    var x = document.createElement("CANVAS");
+    x.id = "galope";
+    x.style.position = "absolute";
+    x.style.left = "3vw";
+    x.style.bottom = "30vw";
+    x.width = "300";
+    x.height = "300";
+    x.style.border = "solid 2px";
+    fifth.appendChild(x);
 
 /*CREATING THE MOVIE*/
 
-var canvas = document.getElementById("galope");
-var context = canvas.getContext("2d");
-var img = document.createElement("img");
-img.src = "images/horseMovieNewSize.jpg";
-img.onload = draw;
-    
-var screen = new Path2D();
-screen.rect(0,0, 300, 300);
-context.clip(screen);
-    
-var row = 0, col = 0;
-function draw(){
-    col = col+1;
-    if(col > 3){ col = 0; row += 1;}
-    if(col == 3 && row == 2){ col = 0; row = 0;}
-        
-    context.drawImage(img, 0-290*col, 0-320*row)
-    setTimeout(function() { draw() }, 40)
+    var canvas = document.getElementById("galope");
+    var context = canvas.getContext("2d");
+    var img = document.createElement("img");
+    img.src = "images/horseMovieNewSize.jpg";
+    img.onload = draw;
+
+    var screen = new Path2D();
+    screen.rect(0,0, 300, 300);
+    context.clip(screen);
+
+    var row = 0, col = 0;
+    function draw(){
+        col = col+1;
+        if(col > 3){ col = 0; row += 1;}
+        if(col == 3 && row == 2){ col = 0; row = 0;}
+
+        context.drawImage(img, 0-290*col, 0-320*row)
+        setTimeout(function() { draw() }, 40)
     };
 }
 
 /*CREATING THE VIDEO TAG*/
 
 function createVideo(){
-var v = document.createElement("VIDEO");
-v.id = "video";
-v.zIndex = 1;
-v.style.position = "absolute";
-v.style.left = "36vw";
-v.style.bottom = "30vw";
-    if (v.canPlayType("video/mp4")) {
-        v.setAttribute("src","images/nippon_girl.mp4");
-    } else {
-        v.setAttribute("src","");
-    }
-    v.setAttribute("width", "300");
-    v.setAttribute("height", "300");
-    v.setAttribute("controls", "controls");
-    v.autoplay = true;
-fifth.appendChild(v);
+    var v = document.createElement("VIDEO");
+    v.id = "video";
+    v.zIndex = 1;
+    v.style.position = "absolute";
+    v.style.left = "36vw";
+    v.style.bottom = "30vw";
+        if (v.canPlayType("video/mp4")) {
+            v.setAttribute("src","images/nippon_girl.mp4");
+        } else {
+            v.setAttribute("src","");
+        }
+        v.setAttribute("width", "300");
+        v.setAttribute("height", "300");
+        v.setAttribute("controls", "controls");
+        v.autoplay = true;
+    fifth.appendChild(v);
 }
 
 /*CREATING THE AUDIO TAG*/
 
 function createAudio(){
-var v = document.createElement("AUDIO");
-v.id = "audio";
-v.style.position = "absolute";
-v.style.left = "68vw";
-v.style.bottom = "30vw";
-    if (v.canPlayType("audio/mpeg")) {
-        v.setAttribute("src","images/Rurouni Kenshin OST 3 - 12-Hiten Mitsurugi Ryuu - Amakakeru Ryuu no Hirameki.mp3");
-    } else {
-        v.setAttribute("src","");
-    }
-    v.setAttribute("width", "300");
-    v.setAttribute("height", "auto");
-    v.setAttribute("controls", "controls");
-fifth.appendChild(v);
+    var v = document.createElement("AUDIO");
+    v.id = "audio";
+    v.style.position = "absolute";
+    v.style.left = "68vw";
+    v.style.bottom = "30vw";
+        if (v.canPlayType("audio/mpeg")) {
+            v.setAttribute("src","images/Rurouni Kenshin OST 3 - 12-Hiten Mitsurugi Ryuu - Amakakeru Ryuu no Hirameki.mp3");
+        } else {
+            v.setAttribute("src","");
+        }
+        v.setAttribute("width", "300");
+        v.setAttribute("height", "auto");
+        v.setAttribute("controls", "controls");
+    fifth.appendChild(v);
 }
 
 //=================================================================   
@@ -397,3 +399,47 @@ txt += "</table>";
 document.getElementById("dytable").innerHTML = txt;
 }
 
+//=================================================================   
+//===================== JAVASCRIPT EVENTS =========================
+//=================================================================
+
+var md = false;
+var canvas = document.getElementById("pizarra");
+canvas.addEventListener("mousedown", down);
+canvas.addEventListener("mouseup", toggledraw);
+canvas.addEventListener("mousemove",
+function(evt)
+{
+    var mousePos = getMousePos(canvas, evt);
+    var posx = mousePos.x;
+    var posy = mousePos.y;
+    draw(canvas, posx, posy);
+});
+
+function down()
+{
+    md = true;
+}
+function toggledraw()
+{
+    canvas.style.cursor = "default";
+    md = false;
+ 
+}
+function getMousePos(canvas, evt)
+{
+    var rect = canvas.getBoundingClientRect();
+    return{
+        x:evt.clientX - rect.left, y:evt.clientY - rect.top
+    };
+}
+function draw(canvas, posx, posy)
+{
+    var context = canvas.getContext("2d");
+    if(md)
+        {
+            canvas.style.cursor = "pointer";
+            context.fillStyle = "white";
+            context.fillRect(posx, posy, 4, 4);
+        }
+}
