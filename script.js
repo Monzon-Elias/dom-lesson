@@ -343,7 +343,15 @@ var Person = function (name, yearOfBirth, job) {
 Person.prototype.calculateAge = function () {return 2018 - this.yearOfBirth};
 Person.prototype.yearsToRetire = function() {return 65 - (2018 - this.yearOfBirth)};
 
-Person.prototype.funnyComment = function() { if(this.yearOfBirth > 1998){return "You have more years of work ahead than years of life!"} else if(this.yearOfBirth > 1964 && this.yearOfBirth < 1998){return "You are on the plateau of your working life!"}  else if(this.yearOfBirth > 1953 && this.yearOfBirth < 1964){ return "You are going down the hill of your working life!"} else{ return "This folk shouldn't be here!"}};
+Person.prototype.funnyComment = function() { 
+    if(this.yearOfBirth > 1998){
+        return "You have more years of work ahead than years of life!"
+    } else if(this.yearOfBirth > 1964 && this.yearOfBirth < 1998){
+        return "You are on the plateau of your working life!"
+    }  else if(this.yearOfBirth > 1953 && this.yearOfBirth < 1964){
+        return "You are going down the hill of your working life!"
+    } else { return "This folk shouldn't be here!"}
+};
 
 var elias = new Person('Elias', 1990, 'teacher');
 var vanessa = new Person('Vanessa', 1969, 'designer');
